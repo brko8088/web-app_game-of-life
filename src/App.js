@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-const totalBoardRows = 50;
-const totalBoardColumns = 50;
+const totalBoardRows = 60;
+const totalBoardColumns = 60;
 
 const newBoardStatus = (cellStatus = () => Math.random() < 0.3) => {
 	const grid = [];
@@ -170,7 +170,8 @@ class App extends Component {
 
     	return (
     		<div>
-				<h1>Game of Life</h1>
+				<h1>Conways's Game of Life</h1>
+
 				<BoardGrid boardStatus={boardStatus} onToggleCellStatus={this.handleToggleCellStatus} />
 				<div className='flexRow upperControls'>
 					<span>
@@ -186,6 +187,7 @@ class App extends Component {
 					<button type='button' onClick={this.handleClearBoard}>Clear Board</button>
 					<button type='button' onClick={this.handleNewBoard}>New Board</button>
 				</div>
+				<h1>Created by <a href="https://brunokoppel.dev" style={{color: "#0cffab"}}>Bruno Koppel (bko)</a></h1>
 			</div>
 		);
 	}
