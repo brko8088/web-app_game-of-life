@@ -2,7 +2,7 @@
 
 Inpired by Cellula Autonoma and my [friend](https://github.com/mernaAlghannam)'s obsession with it.
 
-Deployed at 
+Deployed at https://bko-game-of-life.herokuapp.com/
 
 # Instructions & Documentation
 
