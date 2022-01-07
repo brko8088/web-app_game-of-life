@@ -43,7 +43,7 @@ td {
 button {
   border: none;
   outline: none;
-  border-radius: 20px;
+  border-radius: 10px;
   margin: 20px 10px;
   padding: 10px 15px;
   font-size: 18px;  
@@ -60,18 +60,16 @@ button {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
-  align-items: flex-start;
-}
-
-.upperControls,
-.lowerControls {
   margin: auto;
+  align-items: flex-start;
 }
 
 .upperControls {
   width:350px;
 }
-
+.middleControls {
+  width:350px;
+}
 .lowerControls {
-  width:500px;
+  width:350px;
 }

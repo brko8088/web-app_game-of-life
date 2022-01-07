@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const totalBoardRows = 60;
-const totalBoardColumns = 60;
+const totalBoardColumns = 30;
 
 const newBoardStatus = (cellStatus = () => Math.random() < 0.3) => {
 	const grid = [];
@@ -171,8 +171,8 @@ class App extends Component {
     	return (
     		<div>
 				<h1>Conways's Game of Life</h1>
-
 				<BoardGrid boardStatus={boardStatus} onToggleCellStatus={this.handleToggleCellStatus} />
+				<div><h2>{'Speed Controls'}</h2></div>
 				<div className='flexRow upperControls'>
 					<span>
 						{'+ '}
@@ -181,11 +181,13 @@ class App extends Component {
 					</span>
 					{`Generation: ${generation}`}
 				</div>
-				<div className='flexRow lowerControls'>
+				<div className='flexRow middleControls'>
 					{this.runStopButton()}
 					<button type='button' disabled={isGameRunning} onClick={this.handleStep}>Step</button>
-					<button type='button' onClick={this.handleClearBoard}>Clear Board</button>
-					<button type='button' onClick={this.handleNewBoard}>New Board</button>
+				</div>
+				<div className='flexRow lowerControls'>
+					<button type='button' onClick={this.handleNewBoard}>Re-Generate Board</button>
+					<button type='button' onClick={this.handleClearBoard}>Reset & Clear Board</button>
 				</div>
 				<h1>Created by <a href="https://brunokoppel.dev" style={{color: "#0cffab"}}>Bruno Koppel (bko)</a></h1>
 			</div>
