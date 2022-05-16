@@ -15,21 +15,21 @@ const newBoardStatus = (cellStatus = () => Math.random() < 0.3) => {
 };
 
 const BoardGrid = ({ boardStatus, onToggleCellStatus }) => {
-	const handleClick = (r,c) => onToggleCellStatus(r,c);
+	const handleClick = (r, c) => onToggleCellStatus(r, c);
 
 	const tr = [];
 	for (let r = 0; r < totalBoardRows; r++) {
-  		const td = [];
-  		for (let c = 0; c < totalBoardColumns; c++) {
-    		td.push(
-		        <td
-		        	key={`${r},${c}`}
+		const td = [];
+		for (let c = 0; c < totalBoardColumns; c++) {
+			td.push(
+				<td
+					key={`${r},${c}`}
 					className={boardStatus[r][c] ? 'alive' : 'dead'}
-					onClick={() => handleClick(r,c)}
+					onClick={() => handleClick(r, c)}
 				/>
-    		);
-  		}
-  		tr.push(<tr key={r}>{td}</tr>);
+			);
+		}
+		tr.push(<tr key={r}>{td}</tr>);
 	}
 	return <table><tbody>{tr}</tbody></table>;
 };
@@ -77,12 +77,12 @@ class App extends Component {
 		});
 	}
 
-	handleToggleCellStatus = (r,c) => {
-	    const toggleBoardStatus = prevState => {
+	handleToggleCellStatus = (r, c) => {
+		const toggleBoardStatus = prevState => {
 			const clonedBoardStatus = JSON.parse(JSON.stringify(prevState.boardStatus));
 			clonedBoardStatus[r][c] = !clonedBoardStatus[r][c];
 			return clonedBoardStatus;
-	    };
+		};
 
 		this.setState(prevState => ({
 			boardStatus: toggleBoardStatus(prevState)
@@ -100,7 +100,7 @@ class App extends Component {
 			Note: JSON.parse(JSON.stringify(obj)) doesn't work if the cloned object uses functions */
 			const clonedBoardStatus = JSON.parse(JSON.stringify(boardStatus));
 
-			const amountTrueNeighbors = (r,c) => {
+			const amountTrueNeighbors = (r, c) => {
 				const neighbors = [[-1, -1], [-1, 0], [-1, 1], [0, 1], [1, 1], [1, 0], [1, -1], [0, -1]];
 				return neighbors.reduce((trueNeighbors, neighbor) => {
 					const x = r + neighbor[0];
@@ -117,7 +117,7 @@ class App extends Component {
 
 			for (let r = 0; r < totalBoardRows; r++) {
 				for (let c = 0; c < totalBoardColumns; c++) {
-					const totalTrueNeighbors = amountTrueNeighbors(r,c);
+					const totalTrueNeighbors = amountTrueNeighbors(r, c);
 
 					if (!boardStatus[r][c]) {
 						if (totalTrueNeighbors === 3) clonedBoardStatus[r][c] = true;
@@ -168,8 +168,8 @@ class App extends Component {
 	render() {
 		const { boardStatus, isGameRunning, generation, speed } = this.state;
 
-    	return (
-    		<div>
+		return (
+			<div>
 				<h1>Conways's Game of Life</h1>
 				<BoardGrid boardStatus={boardStatus} onToggleCellStatus={this.handleToggleCellStatus} />
 				<div><h2>{'Speed Controls'}</h2></div>
@@ -189,7 +189,7 @@ class App extends Component {
 					<button type='button' onClick={this.handleNewBoard}>Re-Generate Board</button>
 					<button type='button' onClick={this.handleClearBoard}>Reset & Clear Board</button>
 				</div>
-				<h1>Created by <a href="https://brunokoppel.dev" style={{color: "#0cffab"}}>Bruno Koppel (bko)</a></h1>
+				<h1>Created by <a href="https://brunokoppel.dev" style={{ color: "#0cffab" }}>Bruno Koppel (bko)</a></h1>
 			</div>
 		);
 	}
